@@ -60,7 +60,7 @@ for i in range(1, 151):
 
 <p>With the files in hand, I set about to parse them.</p>
 
-<p>As I mentioned, this was made far less easy by the fact that the files were inconsistently formatted. Many of them put each stanza into a ‘<pre>’ tag, but not all did. Some files had multiple versions of psalms — with different meters — and this further complicated things. Sometimes common meter (what I was interested in) was first, and sometimes it was second. Sometimes the entire psalm was contained within a single ‘<pre>’ tag — and sometimes more than one psalm in a single page was in a single set of such tags!</p>
+<p>As I mentioned, this was made far less easy by the fact that the files were inconsistently formatted. Many of them put each stanza into a pre tag, but not all did. Some files had multiple versions of psalms — with different meters — and this further complicated things. Sometimes common meter (what I was interested in) was first, and sometimes it was second. Sometimes the entire psalm was contained within a single pre tag — and sometimes more than one psalm in a single page was in a single set of such tags!</p>
 
 <p>In order to make sense of this, and turn these HTML documents into something that would be useful and easy to put within a database, I looked at various data parsing options — and even made a good go at doing it all with regular expressions — before settling on an approach that would use the Beautiful Soup library from Python to accomplish the parsing. Once parsed, I would put the records into Pandas DataFrame objects before putting them into a MySQL server.</p>
 
@@ -120,13 +120,45 @@ returns a JSON object with values based on the ‘username’ and ‘api_key’ 
     <li>if user is not valid, response is JSON object with body: {‘valid’: False}</li>
 </ul>
 
+<p>
+    For example, accessing the following url:
+
+    http://localhost:5000/api/psalms/18/stanza/11?api_key=t3stk3y1337
+
+    should give this response:
+</p>
+
+<img src="api_resp.png" width="500px">
+
 The Frontend
 
-Log in to the frontend by spinning up the containers locally with:
+<p>
+    Log in to the frontend by spinning up the containers locally with:
 
-docker-compose up --build
+    docker-compose up --build
+</p>
 
-Then, you can access all the psalms with the press of a button. 
+<p>fire up your local browser to http:://localhost:80</p>
+
+<p>Now, you can log in to the frontend using our test credentials:</p>
+
+<p>
+    username: llcooldoug
+    api_key: t3stk3y1337
+</p>
+
+<img src="fe_login.png" width="500px">
+
+<p>Then, you can access all the psalms with the press of a button.</p>
+
+<img src="fe_select.png" width="500px">
+
+<p>And once clicked, see the details of a given psalm:</p>
+
+<img src="fe_detail.png" width="500px">
+
+<p>In the next iteration, we'll see the 'play music' button actually work correctly. It was surprisingly difficult to get Rabbit-lyrics to work and I was not able to get it integrated and running before the project hit its deadline. Once graded, I'll feel free to go back and make the integration happen and actually work!</p>
+
 
 </body>
 </html>
